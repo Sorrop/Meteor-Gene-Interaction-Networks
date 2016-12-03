@@ -1,0 +1,20 @@
+/* CSS declarations go here */
+
+
+#cy {
+    width: 900px;
+    height: 500px;
+    position: relative;
+    top: 20px;
+    background-color: rgb(204, 255, 255);
+    border-style: ridge;
+    border-width: 5px;
+}
+
+.modal-content {
+	position: absolute;
+}
+
+
+
+

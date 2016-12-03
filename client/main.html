@@ -1,0 +1,70 @@
+<head>
+  <title>gene_interaction</title>
+
+</head>
+
+<body>
+  <h1>Gene Interaction Network Visualization</h1>
+  {{> myModal}}
+  {{> interaction}}
+
+</body>
+
+<template name="interaction">
+  <h2>Please select an analysis</h2>
+  <select id="selectAnalysis">
+    <option value=""></option>
+    {{#each analysisID}}
+      <option value="{{_id._str}}">{{metadata.name}}</option>
+    {{/each}}
+  </select>
+  <br>
+  {{#if isAnalysisSelected}}
+    <h3>Please select a gene</h3>
+    <select id="selectGene">
+      <option value=""></option>
+      {{#each geneID}}
+        <option value="{{core.id.symbol}}">{{core.id.symbol}}</option>
+      {{/each}}
+    </select>
+  {{/if}}
+
+  <div id="cy">
+    
+  </div>
+</template>
+
+
+<template name="myModal">
+    <div class="modal fade">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Interaction Details of {{name}}.</h4>
+                </div>
+
+                <div class="modal-body">
+                    {{#with score}}
+                      <p>Score: {{score}}</p>
+                    {{/with}}
+                    <br>
+                    {{#with pubs}}
+                      <p>Publications:</p>
+                      <ul>
+                        {{#each pubs}}
+                          <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{this}}" target="_blank">{{this}}</a></li>
+                        {{/each}}
+                      </ul>
+                    {{/with}}
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
